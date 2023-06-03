@@ -1,31 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import './chatForm.scss';
 
-import { checkAuthorization } from '../../redux/loginReducer';
-
-import './LoginForm.scss';
-
-type FormDataType = {
-   id: string,
-   apiToken: string,
-}
-
-const LoginForm = () => {
-   const isAuth = useSelector((state: any) => state.login.isAuth);
-
-   const { register, handleSubmit } = useForm<FormDataType>({mode: 'onBlur'});
-
-   const dispatch = useDispatch();
-
-   const onSubmit = ({id, apiToken}: FormDataType) => {
-      dispatch(checkAuthorization({id, apiToken}) as any);
-   }
-
-   if (isAuth) return <Navigate to="/chat-form" />;
-
-   return (
-         <form className="form" onSubmit={handleSubmit(onSubmit)}>
+const ChatForm = () => {
+    return (
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <h2 className="form__title">Заполните форму</h2>
             <ul className="form__wrapper">
                 <li className="form__field">
@@ -39,7 +16,7 @@ const LoginForm = () => {
             </ul>
             <button className='form__btn'>Войти</button>
         </form>
-   );
+    )
 }
 
-export default LoginForm;
+export default ChatForm;
