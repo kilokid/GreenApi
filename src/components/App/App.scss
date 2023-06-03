@@ -1,5 +1,19 @@
+@import '../../style/variables.scss';
+
 .App {
   text-align: center;
+  background-color: $app-back;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    min-height: 222px;
+    content: '';
+    background-color: $green;
+  }
 }
 
 .App-logo {
