@@ -12,7 +12,7 @@ import './Chat.scss';
 const Chat = () => {
     const {id, apiToken} = useSelector((state: any) => state.login);
     const chatId = useSelector((state: any) => state.chat.chatId);
-    const { register, handleSubmit } = useForm({mode: 'onBlur'});
+    const { register, handleSubmit, reset } = useForm({mode: 'onBlur'});
     const messages = useSelector((state: any) => state.message);
     
     const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const Chat = () => {
                 }
                 
                 dispatch(addMessage(newMessage));
+                reset();
                 
             } catch(error) {
                 console.log('error request' + error);
