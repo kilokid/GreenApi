@@ -16,9 +16,7 @@ const initialState: UserDataType = {
 export const setUserData = createAction<UserDataType>('SET_USER_DATA');
 
 export default createReducer(initialState, (builder) => {
-  builder.addCase(setUserData, (state, action) => {
-    console.log(action);
-    
+  builder.addCase(setUserData, (state, action) => {    
     state.id = action.payload.id;
     state.apiToken = action.payload.apiToken;
     state.isAuth = action.payload.isAuth;
